@@ -1,0 +1,25 @@
+package com.employee;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class GroupingBy {
+   
+	public static void main(String [] args) {
+		Employee e=new Employee("ABC",30,10000d,"IT");
+		Employee e2=new Employee("JKL",30,10000d,"IT");
+
+		Employee e3=new Employee("MNO",30,10000d,"ECE");
+		Employee e4=new Employee("RST",30,10000d,"CSE");
+		List<Employee> employee=new ArrayList<Employee>();
+		employee.add(e);
+		employee.add(e2);
+		employee.add(e3);
+		employee.add(e4);
+		
+		Map<String, Long> map=employee.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.counting()));
+		System.out.println(map);
+		}
+	}
